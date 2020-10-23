@@ -21,14 +21,14 @@ function SearchRepo({ history }) {
   const [sortBy, setSortBy] = useState('');
   const [filterBy, setFilterBy] = useState('Any');
   const sortbyOptions = {
-    '': 'Best Match',
+    '': 'Best Match', // Sets the initial sort options
     stars: 'Stars',
   };
 
   const search = (e) => {
     e.preventDefault();
     getResults(query, sortBy);
-    getLanguageOptions();
+    getLanguageOptions(); // The app programatically gathers the available languages from the results
   };
 
   return (
@@ -80,9 +80,9 @@ function SearchRepo({ history }) {
       </form>
       <div className='card-list'>
         {repoResults
-          .filter((repo) =>
-            filterBy === 'Any' ? repo : repo.language === filterBy
-          )
+          .filter((
+            repo // Filter the results if language is selected
+          ) => (filterBy === 'Any' ? repo : repo.language === filterBy))
           .map((repo) => (
             <div
               key={repo?.id}

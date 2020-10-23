@@ -2,6 +2,13 @@ import { createContext } from 'react';
 import axios from 'axios';
 import { observable, action, runInAction, computed, decorate } from 'mobx';
 
+/*
+Mobx state store. Here the github API is called. The results are stored 
+and compoents can 'subscribe' to the store. If an observed value changes 
+the coponents subscribing will be notified. Values can also be computed 
+from stored state. 
+  */
+
 class SearchStore {
   repoResults = [];
   loading = false;
