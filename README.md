@@ -2,8 +2,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 An app to search github repos.
 
 - Ability to filter by language
@@ -23,6 +21,7 @@ An app to search github repos.
 
 ### Installation
 
+```
 1. Clone the repo
 
 ```sh
