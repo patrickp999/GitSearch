@@ -15,18 +15,11 @@ An app to search github repos.
 
 <!-- GETTING STARTED -->
 
-## Getting Started
-
-````
-
-### Installation
-
-```
 1. Clone the repo
 
 ```sh
 git clone https://github.com/patrickp999/GitSearch.git
-````
+```
 
 3. Install NPM packages
 
