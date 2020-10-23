@@ -1,0 +1,110 @@
+@import '_spinner';
+@import '_card';
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(244, 244, 244);
+  color: #333;
+  font-family: 'Roboto Condensed', 'sans-serif';
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 40px;
+}
+
+.title-container {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.form {
+  display: grid;
+}
+
+.label {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.input {
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 0.6rem 2rem;
+  line-height: 2.8rem;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+
+  &:focus {
+    outline-style: none;
+    border-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: backgroung-color 250ms;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  &:focus {
+    outline-style: none;
+  }
+}
+
+.select-options {
+  display: flex;
+  flex-flow: nowrap;
+}
+
+.select {
+  font-size: 1.6rem;
+  width: 97%;
+  padding: 0.6rem 2rem;
+  line-height: 2.8rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+  border: 1px solid #ddd;
+
+  &:focus {
+    outline-style: none;
+  }
+}
+
+@media (min-width: 786px) {
+  .form {
+    grid-template: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+  }
+
+  .input {
+    margin-bottom: 0;
+  }
+}
