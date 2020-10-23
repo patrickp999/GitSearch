@@ -24,7 +24,7 @@ git clone https://github.com/patrickp999/GitSearch.git
 3. Install NPM packages
 
 ```sh
-npm install
+yarn install
 ```
 
 4. Run Development Server
@@ -36,7 +36,7 @@ npm start
 4. Build
 
 ```sh
-npm run build
+yarn build
 ```
 
 <!-- USAGE EXAMPLES -->
