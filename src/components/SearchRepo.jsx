@@ -13,13 +13,16 @@ function SearchRepo({ history }) {
   const {
     repoResults,
     loading,
+    noResults,
     getResults,
     languageOptions,
     getLanguageOptions,
+    setFilterBy,
+    filterBy,
+    setQuery,
+    query,
   } = searchStore;
-  const [query, setQuery] = useState('');
   const [sortBy, setSortBy] = useState('');
-  const [filterBy, setFilterBy] = useState('Any');
   const sortbyOptions = {
     '': 'Best Match', // Sets the initial sort options
     stars: 'Stars',
@@ -27,6 +30,7 @@ function SearchRepo({ history }) {
 
   const search = (e) => {
     e.preventDefault();
+    setFilterBy('Any'); // Reset the filter when search is clicked
     getResults(query, sortBy);
     getLanguageOptions(); // The app programatically gathers the available languages from the results
   };
@@ -69,7 +73,7 @@ function SearchRepo({ history }) {
             />
           </div>
         </div>
-        <button className='button' type='submit' disabled={loading || !query}>
+        <button className='button' type='submit' disabled={loading}>
           Search
         </button>
         {loading ? (
@@ -79,19 +83,25 @@ function SearchRepo({ history }) {
         ) : null}
       </form>
       <div className='card-list'>
-        {repoResults
-          .filter((
-            repo // Filter the results if language is selected
-          ) => (filterBy === 'Any' ? repo : repo.language === filterBy))
-          .map((repo) => (
-            <div
-              key={repo?.id}
-              className='card'
-              onClick={() => history.push(`/details/${repo.id}`)}
-            >
-              <CardItem repo={repo} />
-            </div>
-          ))}
+        {noResults ? (
+          <div className='card'>
+            <p className='card--desc'>No Results</p>
+          </div>
+        ) : (
+          repoResults
+            .filter((
+              repo // Filter the results if language is selected
+            ) => (filterBy === 'Any' ? repo : repo.language === filterBy))
+            .map((repo) => (
+              <div
+                key={repo?.id}
+                className='card'
+                onClick={() => history.push(`/details/${repo.id}`)}
+              >
+                <CardItem repo={repo} />
+              </div>
+            ))
+        )}
       </div>
     </Fragment>
   );
