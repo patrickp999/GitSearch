@@ -15,6 +15,8 @@ An app to search github repos.
 
 <!-- GETTING STARTED -->
 
+Note: This project uses react-router-dom for dynamic routing. To allow opening the build's static index.html file in the browser directly, 'HashRouter' is used. For a webserver build, 'Router' or 'BrowserRouter' is recommended.
+
 1. Clone the repo
 
 ```sh

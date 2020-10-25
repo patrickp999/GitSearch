@@ -12,10 +12,18 @@ from stored state.
 class SearchStore {
   repoResults = [];
   loading = false;
+  noResults = false;
+  filterBy = 'Any';
+  query = '';
+
+  setQuery = (query) => {
+    this.query = query;
+  };
 
   getResults = async (query, sortBy) => {
     this.loading = true;
     this.repoResults = [];
+    this.noResults = false;
     try {
       const repositories = await axios.get(
         'https://api.github.com/search/repositories',
@@ -27,6 +35,7 @@ class SearchStore {
         }
       );
       runInAction('loading repos', () => {
+        if (!repositories.data.items.length) this.noResults = true;
         repositories.data.items.forEach((repo) => {
           this.repoResults.push(repo);
         });
@@ -35,6 +44,7 @@ class SearchStore {
     } catch (error) {
       runInAction('load repos error', () => {
         this.loading = false;
+        this.noResults = true;
       });
       console.log(error);
     }
@@ -42,7 +52,7 @@ class SearchStore {
 
   // Does not mutate state, action not required
   getDetails = async (repoId) => {
-    let result = this.repoResults.find((repo) => repo.id == repoId);
+    let result = this.repoResults.find((repo) => repo.id.toString() === repoId);
     return result;
   };
 
@@ -61,6 +71,10 @@ class SearchStore {
   getLanguageOptions = () => {
     return this.languageOptions;
   };
+
+  setFilterBy = (filter) => {
+    this.filterBy = filter;
+  };
 }
 
 decorate(SearchStore, {
@@ -68,9 +82,14 @@ decorate(SearchStore, {
   loading: observable,
   getDetails: observable,
   getLanguageOptions: observable,
+  noResults: observable,
+  filterBy: observable,
+  query: observable,
   languageOptions: computed,
 
   getResults: action,
+  setFilterBy: action,
+  setQuery: action,
 });
 
 export default createContext(new SearchStore());
