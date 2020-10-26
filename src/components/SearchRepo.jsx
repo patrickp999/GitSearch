@@ -10,6 +10,9 @@ polyfill(); // ES6 promise polyfill for older browsers
 
 function SearchRepo({ history }) {
   const searchStore = useContext(SearchStore);
+  /* Methods and state from the store
+     Most of these persist between routes so making them
+     available form the store allows that. */
   const {
     repoResults,
     loading,
@@ -21,8 +24,9 @@ function SearchRepo({ history }) {
     filterBy,
     setQuery,
     query,
+    sortBy,
+    setSortBy,
   } = searchStore;
-  const [sortBy, setSortBy] = useState('');
   const sortbyOptions = {
     '': 'Best Match', // Sets the initial sort options
     stars: 'Stars',

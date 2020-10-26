@@ -14,6 +14,7 @@ class SearchStore {
   loading = false;
   noResults = false;
   filterBy = 'Any';
+  sortBy = '';
   query = '';
 
   setQuery = (query) => {
@@ -75,6 +76,10 @@ class SearchStore {
   setFilterBy = (filter) => {
     this.filterBy = filter;
   };
+
+  setSortBy = (selectedOption) => {
+    this.sortBy = selectedOption;
+  };
 }
 
 decorate(SearchStore, {
@@ -84,11 +89,13 @@ decorate(SearchStore, {
   getLanguageOptions: observable,
   noResults: observable,
   filterBy: observable,
+  sortBy: observable,
   query: observable,
   languageOptions: computed,
 
   getResults: action,
   setFilterBy: action,
+  setSortBy: action,
   setQuery: action,
 });
 
