@@ -15,7 +15,7 @@ function DetailsPage({ match, history }) {
       login: '',
       avatar_url: '',
     },
-    site_url: ',',
+    html_url: '',
   });
 
   useEffect(() => {
