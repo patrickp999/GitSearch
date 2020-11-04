@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { polyfill } from 'es6-promise';
 import { observer } from 'mobx-react-lite';
 import SearchStore from '../stores/SearchStore';

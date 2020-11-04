@@ -6,7 +6,7 @@ function CardItem({ repo, showAvatar = false, showDescription = false }) {
   return (
     <Fragment>
       {showAvatar ? (
-        <a href={repo.html_url} target='_blank'>
+        <a href={repo.html_url} target='_blank' rel='noopener noreferrer'>
           <img
             className='card--image'
             src={repo.owner?.avatar_url}
